@@ -18,11 +18,11 @@ public class Board extends  BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bno;
 
-    private String text;
+    private String title;
 
     private String content;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Member writer;
 
 

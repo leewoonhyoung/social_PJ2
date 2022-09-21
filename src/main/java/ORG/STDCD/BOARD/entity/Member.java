@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name ="tbl_member")
 public class Member extends BaseEntity{
 
-    @Id @GeneratedValue
+    @Id
     private String email;
 
     private String password;
