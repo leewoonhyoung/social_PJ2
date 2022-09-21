@@ -1,5 +1,6 @@
 package ORG.STDCD.BOARD.entity;
 
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @ToString(exclude = "writer")
+@Table(name ="tbl_board")
 public class Board extends  BaseEntity{
 
     @Id

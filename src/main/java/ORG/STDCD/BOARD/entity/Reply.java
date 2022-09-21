@@ -10,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @ToString(exclude = "board")
+@Table(name ="tbl_reply")
 public class Reply extends  BaseEntity{
 
     @Id
