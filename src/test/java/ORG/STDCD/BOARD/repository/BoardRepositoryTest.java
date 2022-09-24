@@ -6,6 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
@@ -70,6 +74,19 @@ class BoardRepositoryTest {
         for (Object[] arr : result){
             System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
         }
+    }
+
+    @Test
+    @DisplayName("reply count")
+    public void testwithReplyCount(){
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("bno").descending());
+
+        Page<Object[]> result = boardRepository.getBoardWithReplyCount(pageable);
+
+        result.get().forEach(i ->{
+            Object[] arr = (Object[])i;
+            System.out.println(Arrays.toString(i));
+        });
     }
 
 }
