@@ -2,6 +2,8 @@ package ORG.STDCD.BOARD.dto;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Data
 @ToString
 @Builder
@@ -14,4 +16,14 @@ public class BoardDTO {
     private String title;
 
     private String content;
+
+    private String writerEmail;
+
+    private String writerName;
+
+    private int replyCount;
+
+    private LocalDateTime regDate;
+
+    private LocalDateTime modDate;
 }
