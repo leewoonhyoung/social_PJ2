@@ -9,6 +9,8 @@ import ORG.STDCD.BOARD.entity.Member;
 import ORG.STDCD.BOARD.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
@@ -32,5 +34,9 @@ public class BoardServiceImpl implements BoardService {
     public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO pageRequestDTO){
 
         Function<Object[], BoardDTO> fn = (en -> entityToDTO((Board)en[0], (Member)en[1], (Long)en[2]));
+
+        Page<Object[]> result = boardRepository.getBoardWithReplyCount(pageRequestDTO.getPageable(Sort.by("bno").descending()));
+
+        return new PageResultDTO<>(result, fn);
     }
 }
