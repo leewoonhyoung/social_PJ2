@@ -47,17 +47,18 @@ public class PageResultDTO<DTO, EN> {
         this.size = pageable.getPageSize();
 
         //temp end page
-        int tempEnd = (int)(Math.ceil(page/10.0)) * 10;
+        int tempEnd = (int)(Math.ceil(page/10.0)) * 10;  //pointer page.
 
-        start = tempEnd - 9;
+        start = tempEnd - 9; // 화면 변경시 최초의 번호
 
-        prev = start > 1;
+        prev = start > 1; // 이전 버튼 (10 단위)   boolean
 
-        end = totalPage > tempEnd ? tempEnd: totalPage;
+        end = totalPage > tempEnd ? tempEnd: totalPage; // 최종 page
 
-        next = totalPage > tempEnd;
+        next = totalPage > tempEnd; // 다음 버튼 boolean
 
         pageList = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
 
     }
+
 }
