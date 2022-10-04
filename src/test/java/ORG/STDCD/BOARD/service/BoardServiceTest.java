@@ -1,6 +1,8 @@
 package ORG.STDCD.BOARD.service;
 
 import ORG.STDCD.BOARD.dto.BoardDTO;
+import ORG.STDCD.BOARD.dto.PageRequestDTO;
+import ORG.STDCD.BOARD.dto.PageResultDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +25,17 @@ class BoardServiceTest {
                 .build();
 
         Long bno = boardService.register(dto);
+    }
+
+    @Test
+    public  void testList(){
+        PageRequestDTO pageRequestDTO = new PageRequestDTO();
+
+        PageResultDTO<BoardDTO, Object[]> result = boardService.getList(pageRequestDTO);
+
+        for(BoardDTO boardDTO : result.getDtoList()){
+            System.out.println(boardDTO);
+        }
     }
 
 }
